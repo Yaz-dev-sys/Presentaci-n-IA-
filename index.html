@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automatiza o quédate atrás - La Revolución IA para tu Negocio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #3a0ca3 0%, #7209b7 50%, #f72585 100%);
+            --primary-gradient: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
             --secondary-gradient: linear-gradient(45deg, #4361ee 0%, #4cc9f0 100%);
-            --accent-color: #f72585;
+            --accent-color: #4cc9f0;
             --dark-bg: #0a0a1a;
             --light-text: rgba(255,255,255,0.95);
             --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -69,8 +70,8 @@
             align-items: center;
             text-align: center;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(114, 9, 183, 0.3) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(72, 12, 168, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 20% 30%, rgba(67, 97, 238, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(76, 201, 240, 0.3) 0%, transparent 45%),
                 var(--dark-bg);
             position: relative;
             padding: 0 15px;
@@ -98,7 +99,7 @@
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #fff, #f72585);
+            background: linear-gradient(45deg, #fff, #4cc9f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -144,7 +145,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #f72585, #7209b7);
+            background: linear-gradient(45deg, #3a0ca3, #4361ee);
             z-index: -1;
             opacity: 0;
             transition: var(--transition);
@@ -162,6 +163,49 @@
         .cta-button i {
             margin-right: 8px;
             font-size: 1.1rem;
+        }
+
+        /* Modal del calendario */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        #calendar {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
         }
 
         /* Sección del Problema */
@@ -184,7 +228,7 @@
         .problem-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: #f72585;
+            color: var(--accent-color);
         }
 
         .problem-list {
@@ -203,7 +247,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #f72585;
+            color: var(--accent-color);
             font-size: 1.3rem;
         }
 
@@ -231,13 +275,13 @@
 
         .bottleneck-icon {
             font-size: 3rem;
-            color: #f72585;
+            color: var(--accent-color);
             animation: shake 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.4); }
-            100% { box-shadow: 0 0 0 20px rgba(247, 37, 133, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.4); }
+            100% { box-shadow: 0 0 0 20px rgba(76, 201, 240, 0); }
         }
 
         @keyframes shake {
@@ -288,7 +332,7 @@
         .solution-icon {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: #4cc9f0;
+            color: var(--accent-color);
         }
 
         .solution-title {
@@ -383,13 +427,13 @@
 
         .step-icon {
             font-size: 1.8rem;
-            color: #4cc9f0;
+            color: var(--accent-color);
             margin-bottom: 12px;
         }
 
         /* Sección de Resultados */
         .results-section {
-            background: linear-gradient(135deg, #7209b7 0%, #4361ee 100%);
+            background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
         }
 
         .results-grid {
@@ -528,7 +572,7 @@
 
         .team-role {
             font-size: 1rem;
-            color: #4cc9f0;
+            color: var(--accent-color);
             margin-bottom: 10px;
         }
 
@@ -548,7 +592,7 @@
 
         /* CTA Final */
         .cta-section {
-            background: linear-gradient(135deg, #3a0ca3 0%, #7209b7 100%);
+            background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
             text-align: center;
             padding: 80px 20px;
         }
@@ -914,12 +958,12 @@
                     <div class="team-name">Project Manager</div>
                     <div class="team-role">Líder de Proyecto</div>
                     <div style="margin: 10px 0; font-size: 0.9rem;">
-                        <strong>Experiencia:</strong> Gestionando proyectos de automatización empresarial
+                        <strong>Experiencia:</strong> +8 años gestionando proyectos de automatización empresarial con metodologías ágiles (Scrum, Kanban)
                     </div>
                     <div class="team-skills">
-                        <span class="skill-tag">Arquitecto de Software</span>
-                        <span class="skill-tag">Líder Técnico (Tech Lead)</span>
-                        <span class="skill-tag">Desarrollador / Programador (Developer)</span>
+                        <span class="skill-tag">Gestión Ágil</span>
+                        <span class="skill-tag">Planificación Estratégica</span>
+                        <span class="skill-tag">Coordinación de Equipos</span>
                     </div>
                 </div>
                 
@@ -928,44 +972,74 @@
                     <div class="team-name">Diseñador de IU</div>
                     <div class="team-role">Experto en Experiencia de Usuario</div>
                     <div style="margin: 10px 0; font-size: 0.9rem;">
-                        <strong>Experiencia:</strong> Especialista en dashboards ejecutivos y interfaces intuitivas
+                        <strong>Experiencia:</strong> Especialista en dashboards ejecutivos y interfaces intuitivas para sistemas de automatización
                     </div>
                     <div class="team-skills">
-                        <span class="skill-tag">Desarrollador / Programador (Developer)</span>
-                        <span class="skill-tag">UX/UI Designer & Frontend Developer</span>
+                        <span class="skill-tag">Diseño UX/UI</span>
+                        <span class="skill-tag">Prototipado</span>
+                        <span class="skill-tag">Frontend Development</span>
                     </div>
                 </div>
                 
                 <div class="team-card">
-                    <div class="team-avatar">BE</div>
-                    <div class="team-name">Tester</div>
-                    <div class="team-role">Especialista en Automatización</div>
+                    <div class="team-avatar">QA</div>
+                    <div class="team-name">Especialista QA</div>
+                    <div class="team-role">Garantía de Calidad</div>
                     <div style="margin: 10px 0; font-size: 0.9rem;">
-                        <strong>Experiencia:</strong> Implementación de workflows complejos en n8n
+                        <strong>Experiencia:</strong> Implementación de workflows complejos y pruebas automatizadas para sistemas de IA
                     </div>
                     <div class="team-skills">
-                        <span class="skill-tag">QA / Tester (Control de Calidad)</span>
-                        <span class="skill-tag">Desarrollador / Programador (Developer)</span>
+                        <span class="skill-tag">Pruebas Automatizadas</span>
+                        <span class="skill-tag">Control de Calidad</span>
+                        <span class="skill-tag">Optimización</span>
                     </div>
                 </div>
 
                 <div class="team-card">
-                    <div class="team-avatar">AL</div>
+                    <div class="team-avatar">BE</div>
                     <div class="team-name">Backend Developer</div>
-                    <div class="team-role">Desarrollador</div>
+                    <div class="team-role">Especialista en Automatización</div>
                     <div style="margin: 10px 0; font-size: 0.9rem;">
-                        <strong>Experiencia:</strong> Desarrollo de soluciones personalizadas de automatización
+                        <strong>Experiencia:</strong> Desarrollo de soluciones personalizadas de automatización e integración de sistemas
                     </div>
                     <div class="team-skills">
                         <span class="skill-tag">Integración de Sistemas</span>
-                        <span class="skill-tag">Desarrollador Full Stack</span>
+                        <span class="skill-tag">APIs</span>
+                        <span class="skill-tag">Automatización</span>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-avatar">AI</div>
+                    <div class="team-name">Especialista en IA</div>
+                    <div class="team-role">Inteligencia Artificial</div>
+                    <div style="margin: 10px 0; font-size: 0.9rem;">
+                        <strong>Experiencia:</strong> Modelos predictivos y algoritmos de aprendizaje automático para optimización de procesos
+                    </div>
+                    <div class="team-skills">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Procesamiento de Datos</span>
+                        <span class="skill-tag">Algoritmos</span>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-avatar">DA</div>
+                    <div class="team-name">Analista de Datos</div>
+                    <div class="team-role">Business Intelligence</div>
+                    <div style="margin: 10px 0; font-size: 0.9rem;">
+                        <strong>Experiencia:</strong> Extracción de insights y métricas clave para la toma de decisiones basada en datos
+                    </div>
+                    <div class="team-skills">
+                        <span class="skill-tag">Análisis de Datos</span>
+                        <span class="skill-tag">Visualización</span>
+                        <span class="skill-tag">Business Intelligence</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-  
     <!-- CTA Final -->
     <section class="cta-section">
         <div class="container">
@@ -974,12 +1048,22 @@
             <button class="cta-button" onclick="scrollToSection('team')" style="padding: 16px 40px; font-size: 1.1rem;">
                 <i class="fas fa-users"></i> Conoce al equipo
             </button>
-            <button class="cta-button" style="padding: 16px 40px; font-size: 1.1rem;">
-                <i class="fas fa-calendar-check"></i> Agenda tu diagnóstico
-            </button>
+            
         </div>
     </section>
 
+    <!-- Modal del Calendario -->
+    <div id="calendarModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2 style="margin-bottom: 20px; text-align: center;">Agenda una consulta gratuita</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Selecciona una fecha y hora disponible para tu diagnóstico de automatización</p>
+            <div id="calendar"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.min.js"></script>
     <script>
         // Scroll suave
         function scrollToSection(sectionId) {
@@ -1003,7 +1087,7 @@
             });
         }
         
-        // Inicializar
+        // Calendario
         document.addEventListener('DOMContentLoaded', function() {
             // Añadir animaciones iniciales
             document.querySelectorAll('.solution-card, .sector-item, .process-step, .result-card, .testimonial-card, .team-card').forEach(el => {
@@ -1017,6 +1101,69 @@
             
             // Disparar una primera vez
             animateOnScroll();
+            
+            // Configurar calendario
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridWeek,timeGridDay'
+                },
+                slotMinTime: '09:00:00',
+                slotMaxTime: '18:00:00',
+                events: [
+                    {
+                        title: 'Disponible',
+                        start: new Date().setHours(9, 0, 0),
+                        end: new Date().setHours(10, 0, 0),
+                        color: '#4cc9f0'
+                    },
+                    {
+                        title: 'Disponible',
+                        start: new Date().setHours(11, 0, 0),
+                        end: new Date().setHours(12, 0, 0),
+                        color: '#4cc9f0'
+                    },
+                    {
+                        title: 'Disponible',
+                        start: new Date(Date.now() + 86400000).setHours(14, 0, 0),
+                        end: new Date(Date.now() + 86400000).setHours(15, 0, 0),
+                        color: '#4cc9f0'
+                    },
+                    {
+                        title: 'Disponible',
+                        start: new Date(Date.now() + 2 * 86400000).setHours(10, 0, 0),
+                        end: new Date(Date.now() + 2 * 86400000).setHours(11, 0, 0),
+                        color: '#4cc9f0'
+                    }
+                ],
+                dateClick: function(info) {
+                    alert('Has seleccionado: ' + info.dateStr + '\n\nTe enviaremos un correo de confirmación con los detalles.');
+                }
+            });
+            calendar.render();
+            
+            // Modal del calendario
+            const modal = document.getElementById('calendarModal');
+            const btn = document.getElementById('openCalendarBtn');
+            const span = document.getElementsByClassName('close-modal')[0];
+            
+            btn.onclick = function() {
+                modal.style.display = 'flex';
+            }
+            
+            span.onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
         });
     </script>
 </body>
