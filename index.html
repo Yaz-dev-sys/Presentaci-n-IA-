@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatiza o quédate atrás - La Revolución IA para tu Negocio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #3a0ca3 0%, #7209b7 50%, #f72585 100%);
+            --secondary-gradient: linear-gradient(45deg, #4361ee 0%, #4cc9f0 100%);
+            --accent-color: #f72585;
+            --dark-bg: #0a0a1a;
+            --light-text: rgba(255,255,255,0.95);
+            --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #4cc9f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* Hero Section - Impacto Visual */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(114, 9, 183, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(72, 12, 168, 0.3) 0%, transparent 45%),
+                var(--dark-bg);
+            position: relative;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #f72585);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--secondary-gradient);
+            border: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #f72585, #7209b7);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.7);
+        }
+
+        .cta-button:hover::after {
+            opacity: 1;
+        }
+
+        .cta-button i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Sección del Problema */
+        .problem-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .problem-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .problem-content {
+            position: relative;
+        }
+
+        .problem-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #f72585;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 40px;
+            font-size: 1.1rem;
+        }
+
+        .problem-item::before {
+            content: '✖';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #f72585;
+            font-size: 1.5rem;
+        }
+
+        .problem-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bottleneck-animation {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: pulse 3s infinite alternate;
+        }
+
+        .bottleneck-icon {
+            font-size: 4rem;
+            color: #f72585;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.4); }
+            100% { box-shadow: 0 0 0 30px rgba(247, 37, 133, 0); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        /* Sección de Solución */
+        .solution-section {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        }
+
+        .solution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .solution-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent-color);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4cc9f0;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Sección de Sectores */
+        .sectors-section {
+            background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
+        }
+
+        .sector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .sector-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sector-item:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .sector-emoji {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .sector-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .sector-info p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Sección de Procesos */
+        .process-section {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: #4cc9f0;
+            margin-bottom: 15px;
+        }
+
+        /* Sección de Resultados */
+        .results-section {
+            background: linear-gradient(135deg, #7209b7 0%, #4361ee 100%);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .result-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .result-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .result-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Sección de Testimonios */
+        .testimonials-section {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);
+        }
+
+        .testimonials-slider {
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 0 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 3rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            opacity: 0.2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Final */
+        .cta-section {
+            background: linear-gradient(135deg, #3a0ca3 0%, #7209b7 100%);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Animaciones */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .problem-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .problem-visual {
+                height: 300px;
+                margin-top: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Impactante -->
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-network-connection-31502-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Automatiza o quédate atrás</h1>
+            <p class="hero-subtitle fade-in" style="animation-delay: 0.3s">Transforma tu negocio con flujos de trabajo inteligentes impulsados por IA</p>
+            <div class="fade-in" style="animation-delay: 0.6s">
+                <button class="cta-button" onclick="scrollToSection('problem')">
+                    <i class="fas fa-exclamation-circle"></i> Ver el problema
+                </button>
+                <button class="cta-button" onclick="scrollToSection('solution')">
+                    <i class="fas fa-lightbulb"></i> Descubre la solución
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Problema -->
+    <section id="problem" class="problem-section">
+        <div class="container">
+            <h2 class="section-title">⚠️ Tu negocio está perdiendo miles de horas</h2>
+            <p class="section-subtitle">Los cuellos de botella que están frenando tu crecimiento</p>
+            
+            <div class="problem-container">
+                <div class="problem-content">
+                    <h3 class="problem-title">Procesos obsoletos, resultados limitados</h3>
+                    <ul class="problem-list">
+                        <li class="problem-item">Equipos sobrecargados con tareas repetitivas que podrían automatizarse</li>
+                        <li class="problem-item">Errores humanos que cuestan tiempo y dinero en correcciones</li>
+                        <li class="problem-item">Toma de decisiones basada en intuición en lugar de datos en tiempo real</li>
+                        <li class="problem-item">Clientes frustrados por respuestas lentas y servicios no personalizados</li>
+                        <li class="problem-item">Falta de visibilidad sobre el rendimiento real de tus operaciones</li>
+                    </ul>
+                </div>
+                <div class="problem-visual">
+                    <div class="bottleneck-animation">
+                        <i class="fas fa-hourglass-half bottleneck-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Solución -->
+    <section id="solution" class="solution-section">
+        <div class="container">
+            <h2 class="section-title">🚀 La revolución de los flujos de trabajo inteligentes</h2>
+            <p class="section-subtitle">Automatización + IA = Resultados exponenciales</p>
+            
+            <div class="solution-cards">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="solution-title">Tiempo recuperado</h3>
+                    <p>Automatiza hasta el 80% de tareas repetitivas, liberando a tu equipo para lo que realmente importa.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="solution-title">Precisión absoluta</h3>
+                    <p>Elimina errores humanos con sistemas que aprenden y mejoran continuamente.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="solution-title">Decisiones inteligentes</h3>
+                    <p>Analiza millones de puntos de datos en segundos para tomar las mejores decisiones estratégicas.</p>
+                </div>
+            </div>
+            
+            <div class="solution-cards" style="margin-top: 30px;">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="solution-title">Servicio 24/7</h3>
+                    <p>Asistentes virtuales que nunca duermen, atendiendo a tus clientes en cualquier momento.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="solution-title">Escalabilidad automática</h3>
+                    <p>Tu operación crece sin necesidad de multiplicar tu equipo administrativo.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="solution-title">Visión predictiva</h3>
+                    <p>Anticipa tendencias, demanda y problemas antes de que ocurran.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectores que están ganando con IA -->
+    <section class="sectors-section">
+        <div class="container">
+            <h2 class="section-title">🏆 Sectores que ya están dominando con IA</h2>
+            <p class="section-subtitle">La automatización inteligente está transformando industrias</p>
+            
+            <div class="sector-grid">
+                <div class="sector-item">
+                    <div class="sector-emoji">🛒</div>
+                    <div class="sector-info">
+                        <h3>Retail & E-commerce</h3>
+                        <p>Precios dinámicos, recomendaciones personalizadas, gestión de inventario predictivo</p>
+                    </div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-emoji">🏭</div>
+                    <div class="sector-info">
+                        <h3>Manufactura</h3>
+                        <p>Mantenimiento predictivo, control de calidad automatizado, optimización de producción</p>
+                    </div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-emoji">💰</div>
+                    <div class="sector-info">
+                        <h3>Servicios Financieros</h3>
+                        <p>Detección de fraude, scoring crediticio automático, asesores virtuales</p>
+                    </div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-emoji">🏥</div>
+                    <div class="sector-info">
+                        <h3>Salud</h3>
+                        <p>Diagnóstico asistido, gestión de citas, análisis de imágenes médicas</p>
+                    </div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-emoji">🎓</div>
+                    <div class="sector-info">
+                        <h3>Educación</h3>
+                        <p>Tutores inteligentes, personalización del aprendizaje, automatización administrativa</p>
+                    </div>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-emoji">📞</div>
+                    <div class="sector-info">
+                        <h3>Servicios al Cliente</h3>
+                        <p>Chatbots avanzados, análisis de sentimientos, routing inteligente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Procesos Automatizables -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">⚡ Procesos que puedes automatizar hoy</h2>
+            <p class="section-subtitle">Transforma estas áreas clave de tu negocio</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Comunicaciones</h3>
+                    <p>Envío automático de emails, respuestas inteligentes, segmentación de contactos</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Atención al cliente</h3>
+                    <p>Chatbots que resuelven el 80% de consultas frecuentes sin intervención humana</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Gestión de inventario</h3>
+                    <p>Predicción de demanda, reposición automática, optimización de almacenes</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Facturación</h3>
+                    <p>Procesamiento automático de facturas, detección de anomalías, reconciliación</p>
+                </div>
+            </div>
+            
+            <div class="process-steps" style="margin-top: 30px;">
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Reportes</h3>
+                    <p>Generación automática de informes con análisis predictivos y visualizaciones</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Reclutamiento</h3>
+                    <p>Screening de CVs, programación de entrevistas, evaluación de candidatos</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">7</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Ventas</h3>
+                    <p>Identificación de leads calificados, seguimiento automático, predicción de cierres</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">8</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad</h3>
+                    <p>Detección de anomalías, monitoreo continuo, respuesta automática a amenazas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados Tangibles -->
+    <section class="results-section">
+        <div class="container">
+            <h2 class="section-title">📊 Resultados que puedes esperar</h2>
+            <p class="section-subtitle">Impacto medible en empresas que implementaron IA</p>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value">70%</div>
+                    <div class="result-label">Reducción en tiempos de procesos</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">95%</div>
+                    <div class="result-label">Precisión en operaciones</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">3x</div>
+                    <div class="result-label">Velocidad en toma de decisiones</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">24/7</div>
+                    <div class="result-label">Disponibilidad operativa</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">💬 Lo que dicen nuestros clientes</h2>
+            <p class="section-subtitle">Empresas que ya están experimentando la transformación</p>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Automatizamos el 80% de nuestras tareas administrativas y nuestro equipo pudo enfocarse en crecimiento estratégico. En 6 meses aumentamos nuestra productividad un 300%."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>María Cortés</h4>
+                            <p>Directora de Operaciones, RetailChain</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Nuestros chatbots ahora resuelven el 90% de las consultas de clientes sin intervención humana. La satisfacción subió un 40% y los costos bajaron un 60%."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>Javier Rojas</h4>
+                            <p>CEO, ServiTech</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"El sistema predictivo de inventario redujo nuestro stock muerto en un 75% y nunca más nos quedamos sin productos clave. Revolucionó nuestra cadena de suministro."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">LP</div>
+                        <div class="author-info">
+                            <h4>Laura Pérez</h4>
+                            <p>Gerente de Logística, ModaExpress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para transformar tu negocio?</h2>
+            <p class="cta-subtitle">Descubre qué procesos puedes automatizar en tu empresa y cómo la IA puede impulsar tus resultados</p>
+            <button class="cta-button" style="padding: 20px 50px; font-size: 1.2rem;">
+                <i class="fas fa-calendar-check"></i> Agenda tu diagnóstico gratuito
+            </button>
+        </div>
+    </section>
+
+    <script>
+        // Scroll suave
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Animación de elementos al hacer scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in, .solution-card, .sector-item, .process-step, .result-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Añadir animaciones iniciales
+            document.querySelectorAll('.solution-card, .sector-item, .process-step, .result-card, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            });
+            
+            // Configurar evento de scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Disparar una primera vez
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
